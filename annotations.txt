@@ -1,0 +1,30 @@
+********* DOC *********
+https://github.com/golang-migrate/migrate/tree/master/cmd/migrate
+brew install golang-migrate
+
+
+********* MIGRATION *********
+command:
+    migrate create -ext=sql -dir=sql/migrations -seq init
+    migrate -path=sql/migrations -database "mysql://root:root@tcp(localhost:3306)/fullcycle" -verbose up | down
+
+
+********* DOCKER COMPOSE *********
+docker-compose exec mysql bash
+
+
+
+********* MYSQL *********
+mysql -uroot -p fullcycle
+show tables;
+desc categories | courses
+
+********* MAKEFILE *********
+make createmigration
+make migrate
+make migratedown
+
+
+********* SQLC *********
+brew install sqlc
+sqlc generate
